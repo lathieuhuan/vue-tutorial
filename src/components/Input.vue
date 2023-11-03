@@ -1,46 +1,32 @@
 <script setup>
-import { onUpdated, ref, watch, watchEffect } from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
-  value: {
-    type: String,
-    required: true,
-  },
+  modelValue: String,
+  modelModifiers: { default: () => ({}) },
 });
 
-const value = ref("");
+const emit = defineEmits(["update:modelValue"]);
 
-watchEffect(() => {
-  console.log("watchEffect input", props.value);
-  //   value.value = props.value;
-});
+// const value = ref('');
 
-watch(
-  () => props.value,
-  () => console.log("watch input", props.value),
-  {
-    immediate: true,
+// const modelValue = "lasdlas";
+
+function emitValue(e) {
+  let value = e.target.value;
+  if (props.modelModifiers.doubled) {
+    value = value + value;
   }
-);
-
-// watchEffect(() => {
-//   console.log("value", value.value);
-// });
-
-const emit = defineEmits(["change"]);
-
-function onChange(e) {
-  value.value = e.target.value;
-  emit("change", value.value);
+  emit("update:modelValue", value);
 }
 </script>
 
 <template>
-  <input :value="value" @input="onChange" />
+  <input :value="modelValue" @input="emitValue" />
+  <!-- <p>{{ props.errorMessage }}</p> -->
 </template>
 
 <style scoped>
-input {
-  /* padding: ; */
-}
+/* input {
+} */
 </style>

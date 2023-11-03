@@ -1,7 +1,5 @@
 <template>
   <div>
-    <slot name="test"></slot>
+    <slot variant="secondary"></slot>
   </div>
-  <p>Children</p>
-  <slot></slot>
 </template>
