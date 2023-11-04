@@ -1,10 +1,13 @@
 <script setup>
 import { ref, watchEffect, computed } from "vue";
 import Button from "./components/Button.vue";
-import Input from "./components/Input.vue";
+// import ComponentA from "./components/ComponentA.vue";
+// import ComponentB from "./components/ComponentB.vue";
+// import { store } from "./store.js";
+// import Input from "./components/Input.vue";
 import Wrapper from "./components/Wrapper.vue";
-import VoucherList from "./components/VoucherList.vue";
-import { useMouse } from "./composables/useMouse.js";
+// import VoucherList from "./components/VoucherList.vue";
+// import { useMouse } from "./composables/useMouse.js";
 
 // const num = ref(0);
 const boo = ref(false);
@@ -12,8 +15,8 @@ const boo = ref(false);
 // const vouchers = ref(["A"]);
 // watchEffect(() => console.log(text.value));
 
-const position = computed(() => (boo.value ? "prefix" : "suffix"));
-const mouse = useMouse();
+// const position = computed(() => (boo.value ? "prefix" : "suffix"));
+// const mouse = useMouse();
 </script>
 
 <template>
@@ -23,14 +26,27 @@ const mouse = useMouse();
   <!-- <component :is="boo ? Button : Input">Hello</component> -->
   <!-- <Input v-model.doubled="text" /> -->
   <!-- <Input :value="text" :errorMessage="text" @change="console.log" /> -->
+  <!-- <p>{{ mouse.x }} {{ mouse.y }}</p> -->
 
-  <p>{{ mouse.x }} {{ mouse.y }}</p>
+  <Wrapper>
+    <Button>Click</Button>
+  </Wrapper>
 
-  <Wrapper v-slot="props">
+  <!-- <Button @click="store.count++">Click</Button> -->
+  <!-- <ComponentA /> -->
+  <!-- <ComponentB /> -->
+
+  <!-- <Wrapper v-slot="props">
     <Button :class="props.variant" @click="boo = !boo">
       Click {{ position }}
       <template #prefix><span>Icon</span></template>
     </Button>
-  </Wrapper>
+  </Wrapper> -->
   <!-- <VoucherList v-model:vouchers="vouchers" v-model:merchants="merchants" /> -->
 </template>
+
+<style>
+.my-div .primary {
+  background-color: red;
+}
+</style>

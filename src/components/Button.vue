@@ -8,8 +8,8 @@
   </button>
 </template>
 
-<style>
-.primary {
+<style scoped>
+button.primary {
   background-color: black;
   color: white;
 }
